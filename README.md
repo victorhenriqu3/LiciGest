@@ -16,7 +16,7 @@ Um sistema desenvolvido para facilitar o gerenciamento de licitações públicas
 
 ## **Visão Geral**
 
-O **LiciGest** é uma aplicação que permite gerenciar processos licitatórios, documentos, fornecedores e relatórios de forma centralizada. Ele foi projetado para atender órgãos públicos e privados que realizam ou participam de licitações.
+O **LiciGest** é uma aplicação que permite gerenciMIgrationsar processos licitatórios, documentos, fornecedores e relatórios de forma centralizada. Ele foi projetado para atender órgãos públicos e privados que realizam ou participam de licitações.
 
 O sistema é baseado na arquitetura **Domain-Driven Design (DDD)**, garantindo flexibilidade e robustez para atender regras de negócio específicas. Ele utiliza **Blazor** para uma interface web interativa e responsiva, integrando-se perfeitamente com uma API desenvolvida em .NET.
 
@@ -50,7 +50,7 @@ O sistema é baseado na arquitetura **Domain-Driven Design (DDD)**, garantindo f
 
 - **SQL Server**: Para armazenamento de dados.
 
-### **Outras Tecnologias**
+### **Outras Tecnologias**MIgrations
 
 - **Arquitetura DDD**: Organização modular com camadas bem definidas.
 - **Clean Architecture**: Separação de responsabilidades e foco na manutenibilidade.
