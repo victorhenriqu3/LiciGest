@@ -14,7 +14,7 @@ namespace Domain.Entities
         public List<string> Requisitos { get; private set; }
         public DateTime DataAbertura { get; private set; }
         public DateTime DataFechamento { get; private set; }
-        public StatusEdital Status { get; private set; } = StatusEdital.Aberto;
+        public StatusEdital Status { get; set; } = StatusEdital.Aberto;
 
         public Edital(
             string titulo,

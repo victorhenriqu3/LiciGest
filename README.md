@@ -9,8 +9,9 @@ Um sistema desenvolvido para facilitar o gerenciamento de licitações públicas
 1. [Visão Geral](#visão-geral)
 2. [Funcionalidades Principais](#funcionalidades-principais)
 3. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-4. [Estrutura do Projeto](#estrutura-do-projeto)
-5. [Autor](#autor)
+4. [Cobertura de Testes](#cobertura-de-testes)
+5. [Estrutura do Projeto](#estrutura-do-projeto)
+6. [Autor](#autor)
 
 ---
 
@@ -36,7 +37,7 @@ O sistema é baseado na arquitetura **Domain-Driven Design (DDD)**, garantindo f
 
 ### **Back-end**
 
-- **.NET 8.0**: Para construção da API.
+- **.NET 9.0**: Para construção da API.
 - **Entity Framework Core**: Para mapeamento objeto-relacional e migrações.
 - **ClosedXML**: Para manipulação de arquivos Excel.
 - **Moq e xUnit**: Para testes automatizados.
@@ -50,11 +51,35 @@ O sistema é baseado na arquitetura **Domain-Driven Design (DDD)**, garantindo f
 
 - **SQL Server**: Para armazenamento de dados.
 
-### **Outras Tecnologias**MIgrations
+### **Outras Tecnologias**
 
 - **Arquitetura DDD**: Organização modular com camadas bem definidas.
 - **Clean Architecture**: Separação de responsabilidades e foco na manutenibilidade.
 - **Git**: Controle de versão.
+
+---
+
+## Cobertura de Testes
+
+O **LiciGest** está sendo projetado com foco em alta qualidade e confiabilidade. Para isso, a cobertura de testes é um pilar essencial no desenvolvimento. A implementação de testes é feita para verificar o comportamento esperado em diferentes camadas do sistema, abrangendo desde regras de negócio no domínio até integração com infraestrutura e APIs.
+
+**Ferramentas para Cobertura:**
+
+- **Coverlet**: Utilizado para medir a cobertura de testes em projetos .NET.
+
+- **ReportGenerator**: Para gerar relatórios detalhados em formatos HTML, mostrando as áreas do código cobertas e não cobertas.
+
+A execução das ferramentas acima são de forma simplificada:
+
+```bash
+# Para ambiente linux basta executar (Como é o meu caso)
+
+/usr/bin/env bash ./coverage_report.sh
+
+# Para ambiente Windows basta executar
+./coverage_report.bat
+
+```
 
 ---
 
@@ -65,18 +90,18 @@ Essa estrutura de pastas segue princípios de Domain-Driven Design (DDD), organi
 ```bash
 ├── Domain/
 │ ├── Entities/ # Entidades principais do domínio
-│ ├── ValueObjects/ # Objetos de valor
-│ └── Repositories/ # Interfaces para persistência de dados.
+│ ├── Repositories/ # Interfaces para persistência de dados.
+│ └── ValueObjects/ # Objetos de valor
 │
 ├── Infra/
-│ ├── Persistence/ # Implementações concretas dos repositórios.
 │ ├── Config/ # Configuração de banco de dados, serviços, etc.
-│ └── Migrations/ # Mapeamento e migrações EF Core.
+│ ├── Migrations/ # Mapeamento e migrações EF Core.
+│ └── Persistence/ # Implementações concretas dos repositórios.
 │
 ├── Services/
-│ ├── UseCases/ # Casos de uso da aplicação (orquestra lógica de domínio e infraestrutura).
 │ ├── DTOs/ # Modelos de entrada e saída de dados.
-│ └── Mappers/ # Conversores entre entidades de domínio e DTOs.
+│ ├── Mappers/ # Conversores entre entidades de domínio e DTOs.
+│ └── UseCases/ # Casos de uso da aplicação (orquestra lógica de domínio e infraestrutura).
 │
 ├── UI/
 │ ├── Pages/ # Páginas Blazor
@@ -84,10 +109,10 @@ Essa estrutura de pastas segue princípios de Domain-Driven Design (DDD), organi
 │ ├── Services/ # Serviços que consomem a API do back-end.
 │ └── Styles/ # Arquivos CSS/SCSS para estilização.
 │
-└── Tests/
-├── ApplicationTests/ # Testes unitários e de integração para Application.
-├── DomainTests/ # Testes de regras de negócios do domínio.
-└── InfraTests/ # Testes de integração da infraestrutura.
+├── Tests/
+│ ├── ServicesTests/ # Testes unitários e de integração para Services.
+│ ├── DomainTests/ # Testes de regras de negócios do domínio.
+│ └── InfraTests/ # Testes de integração da infraestrutura.
 ```
 
 Abaixo, segue a descrição de cada camada:
