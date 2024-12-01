@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Repositories;
+using Infra.Config;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Persistence.Repositories
@@ -10,10 +11,10 @@ namespace Infra.Persistence.Repositories
     public class BaseRepository<T> : IRepository<T>
         where T : class
     {
-        protected readonly AppDbContext _context;
+        protected readonly ApplicationDbContext _context;
         protected readonly DbSet<T> _dbSet;
 
-        public BaseRepository(AppDbContext context)
+        public BaseRepository(ApplicationDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
