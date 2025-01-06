@@ -146,6 +146,16 @@ Abaixo, segue a descrição de cada camada:
 
 ---
 
+## Possiveis Problemas
+
+- Ao iniciar o projeto em uma nova máquina ele pode apresentar alguns erros relacionados a pacotes utilizados, para sanar este problema se pode executar o comando abaixo na raiz do projeto:
+
+  ```sh
+  dotnet nuget add source https://api.nuget.org/v3/index.json
+  ```
+
+---
+
 ## Autor
 
 <a href="https://www.linkedin.com/in/victorhenriqu3/">
