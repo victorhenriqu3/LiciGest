@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241201030802_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250204002412_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,8 @@ namespace Infra.Migrations
 
             modelBuilder.Entity("Infra.Config.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("CPF")
+                        .HasMaxLength(11)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("AccessFailedCount")
@@ -70,6 +71,17 @@ namespace Infra.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("INTEGER");
@@ -94,6 +106,9 @@ namespace Infra.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Role")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
@@ -104,7 +119,7 @@ namespace Infra.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("CPF");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
