@@ -19,9 +19,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         base.OnModelCreating(modelBuilder);
 
         // Definir CPF como chave primária no Identity
-        modelBuilder.Entity<ApplicationUser>().HasKey(u => u.CPF);
-
-        modelBuilder.Entity<ApplicationUser>().Property(u => u.CPF).HasMaxLength(11).IsRequired();
     }
 
     // Configuração necessária para SQLite quando usado pelo 'dotnet ef'

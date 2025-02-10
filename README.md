@@ -33,6 +33,8 @@ O sistema é baseado na arquitetura **Domain-Driven Design (DDD)**, garantindo f
 
 ---
 
+
+
 ## **Tecnologias Utilizadas**
 
 ### **Back-end**
