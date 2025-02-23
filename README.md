@@ -9,14 +9,15 @@ Um sistema desenvolvido para facilitar o gerenciamento de licitações públicas
 1. [Visão Geral](#visão-geral)
 2. [Funcionalidades Principais](#funcionalidades-principais)
 3. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-4. [Estrutura do Projeto](#estrutura-do-projeto)
-5. [Autor](#autor)
+4. [Cobertura de Testes](#cobertura-de-testes)
+5. [Estrutura do Projeto](#estrutura-do-projeto)
+6. [Autor](#autor)
 
 ---
 
 ## **Visão Geral**
 
-O **LiciGest** é uma aplicação que permite gerenciar processos licitatórios, documentos, fornecedores e relatórios de forma centralizada. Ele foi projetado para atender órgãos públicos e privados que realizam ou participam de licitações.
+O **LiciGest** é uma aplicação que permite gerenciMIgrationsar processos licitatórios, documentos, fornecedores e relatórios de forma centralizada. Ele foi projetado para atender órgãos públicos e privados que realizam ou participam de licitações.
 
 O sistema é baseado na arquitetura **Domain-Driven Design (DDD)**, garantindo flexibilidade e robustez para atender regras de negócio específicas. Ele utiliza **Blazor** para uma interface web interativa e responsiva, integrando-se perfeitamente com uma API desenvolvida em .NET.
 
@@ -32,11 +33,13 @@ O sistema é baseado na arquitetura **Domain-Driven Design (DDD)**, garantindo f
 
 ---
 
+
+
 ## **Tecnologias Utilizadas**
 
 ### **Back-end**
 
-- **.NET 8.0**: Para construção da API.
+- **.NET 9.0**: Para construção da API.
 - **Entity Framework Core**: Para mapeamento objeto-relacional e migrações.
 - **ClosedXML**: Para manipulação de arquivos Excel.
 - **Moq e xUnit**: Para testes automatizados.
@@ -58,6 +61,30 @@ O sistema é baseado na arquitetura **Domain-Driven Design (DDD)**, garantindo f
 
 ---
 
+## Cobertura de Testes
+
+O **LiciGest** está sendo projetado com foco em alta qualidade e confiabilidade. Para isso, a cobertura de testes é um pilar essencial no desenvolvimento. A implementação de testes é feita para verificar o comportamento esperado em diferentes camadas do sistema, abrangendo desde regras de negócio no domínio até integração com infraestrutura e APIs.
+
+**Ferramentas para Cobertura:**
+
+- **Coverlet**: Utilizado para medir a cobertura de testes em projetos .NET.
+
+- **ReportGenerator**: Para gerar relatórios detalhados em formatos HTML, mostrando as áreas do código cobertas e não cobertas.
+
+A execução das ferramentas acima são de forma simplificada:
+
+```bash
+# Para ambiente linux basta executar (Como é o meu caso)
+
+/usr/bin/env bash ./coverage_report.sh
+
+# Para ambiente Windows basta executar
+./coverage_report.bat
+
+```
+
+---
+
 ## Estrutura do Projeto
 
 Essa estrutura de pastas segue princípios de Domain-Driven Design (DDD), organizando o código em camadas bem definidas para separar as responsabilidades e facilitar a manutenção, escalabilidade e testes da aplicação.
@@ -65,18 +92,18 @@ Essa estrutura de pastas segue princípios de Domain-Driven Design (DDD), organi
 ```bash
 ├── Domain/
 │ ├── Entities/ # Entidades principais do domínio
-│ ├── ValueObjects/ # Objetos de valor
-│ └── Repositories/ # Interfaces para persistência de dados.
+│ ├── Repositories/ # Interfaces para persistência de dados.
+│ └── ValueObjects/ # Objetos de valor
 │
 ├── Infra/
-│ ├── Persistence/ # Implementações concretas dos repositórios.
 │ ├── Config/ # Configuração de banco de dados, serviços, etc.
-│ └── Migrations/ # Mapeamento e migrações EF Core.
+│ ├── Migrations/ # Mapeamento e migrações EF Core.
+│ └── Persistence/ # Implementações concretas dos repositórios.
 │
 ├── Services/
-│ ├── UseCases/ # Casos de uso da aplicação (orquestra lógica de domínio e infraestrutura).
 │ ├── DTOs/ # Modelos de entrada e saída de dados.
-│ └── Mappers/ # Conversores entre entidades de domínio e DTOs.
+│ ├── Mappers/ # Conversores entre entidades de domínio e DTOs.
+│ └── UseCases/ # Casos de uso da aplicação (orquestra lógica de domínio e infraestrutura).
 │
 ├── UI/
 │ ├── Pages/ # Páginas Blazor
@@ -84,10 +111,10 @@ Essa estrutura de pastas segue princípios de Domain-Driven Design (DDD), organi
 │ ├── Services/ # Serviços que consomem a API do back-end.
 │ └── Styles/ # Arquivos CSS/SCSS para estilização.
 │
-└── Tests/
-├── ApplicationTests/ # Testes unitários e de integração para Application.
-├── DomainTests/ # Testes de regras de negócios do domínio.
-└── InfraTests/ # Testes de integração da infraestrutura.
+├── Tests/
+│ ├── ServicesTests/ # Testes unitários e de integração para Services.
+│ ├── DomainTests/ # Testes de regras de negócios do domínio.
+│ └── InfraTests/ # Testes de integração da infraestrutura.
 ```
 
 Abaixo, segue a descrição de cada camada:
@@ -118,6 +145,16 @@ Abaixo, segue a descrição de cada camada:
   - **Components/** : Componentes reutilizáveis, como botões, modais ou tabelas, que facilitam a construção de interfaces consistentes.
   - **Services/** : Serviços front-end que consomem APIs do back-end para comunicação e troca de dados.
   - **Styles/** : Arquivos CSS/SCSS responsáveis pela estilização da interface, garantindo uma aparência personalizada e responsiva.
+
+---
+
+## Possiveis Problemas
+
+- Ao iniciar o projeto em uma nova máquina ele pode apresentar alguns erros relacionados a pacotes utilizados, para sanar este problema se pode executar o comando abaixo na raiz do projeto:
+
+  ```sh
+  dotnet nuget add source https://api.nuget.org/v3/index.json
+  ```
 
 ---
 
